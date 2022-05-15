@@ -16,8 +16,23 @@ class Window :
         self.root.geometry("{}x{}".format(self.width, self.height))
         self.root.resizable(width=FALSE, height=FALSE)
 
+        self.menubar = Menu(self.root)
+
+        self.file_menu = Menu(self.menubar)
+        self.file_menu.add_command(label="save")
+        self.file_menu.add_command(label="load")
+        
+        self.menubar.add_cascade(label="File", menu=self.file_menu)
+        self.root.config(menu=self.menubar)
+
         self.restart_button = Button(self.root, width=15, height=7, text="restart", bg="skyblue", command=self.__onClickForRestartButton)
         self.restart_button.grid()
+
+    def __onClickForSaveMenu() :
+        pass
+
+    def __onClickForLoadMenu() :
+        pass
 
     def __onClickForRestartButton(self) :
         self.setter.fix(self.getFixNumber())
