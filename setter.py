@@ -25,11 +25,11 @@ class Setter :
                 self.list[info[1]] = info[0]
                 self.list[index] = temp
 
-        for i in range(self.column) :
+        for i in range(self.row) :
             temp_list = []
 
-            for j in range(self.row) :
-                temp_list.append(self.list[i * self.row + j])
+            for j in range(self.column) :
+                temp_list.append(self.list[i * self.column + j])
 
             return_array.append(temp_list)
 

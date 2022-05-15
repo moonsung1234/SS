@@ -8,5 +8,5 @@ height = 700 # static
 sr = Setter(6, 5, 30)
 
 wd = Window(width, height, sr)
-wd.set(sr.list)
+wd.init()
 wd.show()
