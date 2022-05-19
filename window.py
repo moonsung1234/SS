@@ -37,9 +37,15 @@ class Window :
 
         file = open(path + "/{}".format("save.ss"), "w")
 
-        print(self.setter.list)
-
         file.write(str(self.setter.list))
+
+    def __strTolist(self, str) :
+        l = str.split(",")
+
+        for i in range(len(l)) :
+            l[i] = int(l[i])
+
+        return l
 
     def __onClickForLoadMenu(self) :
         path = filedialog.askopenfilename(initialdir="/", title="load")
@@ -54,7 +60,27 @@ class Window :
 
             number_list += line
 
-        print(number_list)
+
+        string = number_list[1:-1]
+        number_list = []
+        until_right = False
+        start_index = 0
+
+        for i in range(len(string)) :
+            if string[i] == "[" :
+                until_right = True
+                start_index = i
+
+                continue
+
+            if until_right and string[i] == "]" :
+                number_list.append(self.__strTolist(string[start_index+1:i]))
+
+                until_right = False
+
+        self.setter.list = number_list
+
+        self.set(self.setter.list)
 
     def __onClickForRestartButton(self) :
         self.setter.fix(self.getFixNumber())
