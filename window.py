@@ -1,6 +1,7 @@
 
 from tkinter import *
 from tkinter import simpledialog
+from tkinter import filedialog
 import tkinter.font as font
 
 class Window :
@@ -19,8 +20,8 @@ class Window :
         self.menubar = Menu(self.root)
 
         self.file_menu = Menu(self.menubar)
-        self.file_menu.add_command(label="save")
-        self.file_menu.add_command(label="load")
+        self.file_menu.add_command(label="save", command=self.__onClickForSaveMenu)
+        self.file_menu.add_command(label="load", command=self.__onClickForLoadMenu)
         
         self.menubar.add_cascade(label="File", menu=self.file_menu)
         self.root.config(menu=self.menubar)
@@ -28,11 +29,32 @@ class Window :
         self.restart_button = Button(self.root, width=15, height=7, text="restart", bg="skyblue", command=self.__onClickForRestartButton)
         self.restart_button.grid()
 
-    def __onClickForSaveMenu() :
-        pass
+    def __onClickForSaveMenu(self) :
+        path = filedialog.askdirectory(title="save")
 
-    def __onClickForLoadMenu() :
-        pass
+        if len(path) == 0 :
+            return
+
+        file = open(path + "/{}".format("save.ss"), "w")
+
+        print(self.setter.list)
+
+        file.write(str(self.setter.list))
+
+    def __onClickForLoadMenu(self) :
+        path = filedialog.askopenfilename(initialdir="/", title="load")
+        file = open(path, "r")
+        number_list = ""
+
+        while True :
+            line = file.readline()
+
+            if not line :
+                break
+
+            number_list += line
+
+        print(number_list)
 
     def __onClickForRestartButton(self) :
         self.setter.fix(self.getFixNumber())
