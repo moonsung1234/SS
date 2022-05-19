@@ -31,7 +31,7 @@ wd.show()
 
 <br/>
 
-![ss](https://user-images.githubusercontent.com/71556009/168117047-9287eb71-7661-4f64-b846-c7b767098e47.PNG)
+![ss](https://user-images.githubusercontent.com/71556009/169291408-94719721-55af-4fe4-8c68-64aeca31d6e9.PNG)
 
 <br/>
 
